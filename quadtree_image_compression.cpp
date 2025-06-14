@@ -487,7 +487,7 @@ int main(int argc,const char* argv[]){
     // calculating the percentage compression 
     int origPixel= check_pixel_num(node);
     int compPixel= num_tree_nodes(node);
-    int PercentageCompresion = ((origPixel-compPixel)*100)/e;
+    int PercentageCompresion = ((origPixel-compPixel)*100)/origPixel;
     cout<<"Original Pixel: "<<origPixel<<endl;
     cout<<"No.of Pixel after Compression: "<<compPixel<<endl;
     cout<<"Compresion Ratio(in percentage): "<<PercentageCompresion<<"%"<<endl;
