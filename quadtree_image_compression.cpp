@@ -422,17 +422,13 @@ int main(int argc,const char* argv[]){
 
     while(original.empty()){
 
-        if(original.empty()){
+        cout<<"No image found at entered path, please enter the path again\n";
 
-            cout<<"No image found at entered path, please enter the path again\n";
+        cin>>s;
 
-            cin>>s;
+        original=imread(s, IMREAD_GRAYSCALE);
 
-            original=imread(s, IMREAD_GRAYSCALE);
-
-            modified=imread(s, IMREAD_GRAYSCALE);
-
-        }
+        modified=imread(s, IMREAD_GRAYSCALE);
 
     }
 
