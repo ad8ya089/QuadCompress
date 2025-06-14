@@ -432,19 +432,19 @@ int main(int argc,const char* argv[]){
 
     }
 
-    char x;
+    char ch;
 
     cout<<"Enter Y if you want to change the threshold value or press N if you wish to continue with default threshold value\n";
 
-    cin>>x;
+    cin>>ch;
 
-    if(x=='Y'){
+    if(ch=='Y'){
 
         cout<<"Please enter the new threshold value\n";
 
         cin>>threshold;
 
-    }else if(x=='N'){
+    }else if(ch=='N'){
 
         threshold=default_threshold;
 
@@ -485,11 +485,11 @@ int main(int argc,const char* argv[]){
     build_qdtree(node,threshold);
 
     // calculating the percentage compression 
-    int e= check_pixel_num(node);
-    int f= num_tree_nodes(node);
-    int PercentageCompresion = ((e-f)*100)/e;
-    cout<<"Original Pixel: "<<e<<endl;
-    cout<<"No.of Pixel after Compression: "<<f<<endl;
+    int origPixel= check_pixel_num(node);
+    int compPixel= num_tree_nodes(node);
+    int PercentageCompresion = ((origPixel-compPixel)*100)/e;
+    cout<<"Original Pixel: "<<origPixel<<endl;
+    cout<<"No.of Pixel after Compression: "<<compPixel<<endl;
     cout<<"Compresion Ratio(in percentage): "<<PercentageCompresion<<"%"<<endl;
 
     decode_tree(node, modified, rows, cols);
