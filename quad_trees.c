@@ -21,7 +21,7 @@ point* newpoint(float x,float y){
     return p;
 }
 
-// chech if two points are equal
+// check if two points are equal
 
 int equal(point* p1,point* p2){
     // checks if two points are equal
@@ -214,28 +214,24 @@ int searchquadtree(quadtree* qt,point* p){
     }
 }
 
-void range_query(quadtree* qt,region* re)
+void range_query(quadtree* qt, region* re) 
 {
-    // prints all the points that are present in the region
-    if(qt==NULL || qt->p==NULL)
-        return;
-    if(box_intersect_check(qt->r,re)==0)
-    {
-        return;
+    if (qt == NULL || qt->p == NULL) return;
+
+    int intersect = box_intersect_check(qt->r, re);
+    if (intersect == 0) return;
+    if (intersect == 2) re = qt->r;
+
+    if (ispointinregion(qt->p, re)) {
+        printf("(%f, %f)\n", qt->p->x, qt->p->y);
     }
-    if(box_intersect_check(qt->r,re)==2)
-    {
-        re = qt->r;
-    }
-    if(ispointinregion(qt->p, re)==1)
-    {
-        printf("%f %f\n",qt->p->x,qt->p->y);
-    }
-    range_query(qt->nw,re);
-    range_query(qt->ne,re);
-    range_query(qt->se,re);
-    range_query(qt->sw,re);
+
+    range_query(qt->nw, re);
+    range_query(qt->ne, re);
+    range_query(qt->se, re);
+    range_query(qt->sw, re);
 }
+
 
 int main(){
     // choices 
